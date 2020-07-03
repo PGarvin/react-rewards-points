@@ -1,4 +1,4 @@
-export default function returnMusicData() {
+export default function spendingData() {
 	return [{"Date":"7-01-2020","Spent":120},
 {"Date":"6-24-2020","Spent":210},
 {"Date":"6-21-2020","Spent":104},
