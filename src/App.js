@@ -25,7 +25,9 @@ const purchaseList = startingList
     const purchaseDate = new Date(purchase.Date);
     purchase.month = purchaseDate.getMonth();
     purchase.points = calculatePoints(purchase.Spent);
-    months[purchase.month]["Points"] = parseInt(months[purchase.month]["Points"]);
+    months[purchase.month]["Points"] = parseInt(
+      months[purchase.month]["Points"]
+    );
     months[purchase.month]["Points"] += Number(purchase.points);
     threeMonthsTally += purchase.points;
     months[purchase.month]["Current"] = "true";
@@ -42,7 +44,6 @@ const threeMonths = months
   .map(function (month) {
     return month;
   });
-
 
 purchaseList.sort(function (a, b) {
   if (a.Date > b.Date) {
@@ -100,38 +101,34 @@ class Collection extends React.Component {
     return (
       <div className="holder">
         <header>
-        <h1>Points from the last 3 months</h1>
+          <h1>Points from the last 3 months</h1>
         </header>
         <main role="main">
-        <MonthCollection months={threeMonths} />
-        <Table striped bordered hover size="sm" className="table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Amount Spent</th>
-              <th>Points Earned</th>
-            </tr>
-          </thead>
-          <tbody>
-            {purchases.map((purchase, i) => (
-              <Purchase key={i} date={purchase.Date} spent={purchase.Spent} />
-            ))}
-          </tbody>
-        </Table>
+          <MonthCollection months={threeMonths} />
+          <Table striped bordered hover size="sm" className="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Amount Spent</th>
+                <th>Points Earned</th>
+              </tr>
+            </thead>
+            <tbody>
+              {purchases.map((purchase, i) => (
+                <Purchase key={i} date={purchase.Date} spent={purchase.Spent} />
+              ))}
+            </tbody>
+          </Table>
         </main>
       </div>
     );
   }
 }
 
-
-
 class App extends Component {
   render() {
-  return (
-    <Collection purchases={purchaseList} />
-  );
-}
+    return <Collection purchases={purchaseList} />;
+  }
 }
 
 export default App;
