@@ -14,27 +14,8 @@ const months = monthsData();
 
 let threeMonthsTally = 0;
 
-const calculatePoints = (moneySpent) => {
-  let points = 0;
-  if (50 < moneySpent && moneySpent <= 100) {
-    points += moneySpent - 50;
-  }
-  if (100 < moneySpent) {
-    points += 50 + (moneySpent - 100) * 2;
-  }
-  return points;
-};
-
-const isInLast3Months = (date) => {
-  let threeMonthStart = new Date();
-  let spendingDate = new Date(date);
-  threeMonthStart.setDate(1);
-  threeMonthStart.setMonth(threeMonthStart.getMonth() - 2);
-
-  return spendingDate - threeMonthStart > 0;
-};
-
-
+const calculatePoints = require("./functions.js").calculatePoints;
+const isInLast3Months = require("./functions.js").isInLast3Months;
 
 const purchaseList = startingList
   .filter(function (purchase) {
