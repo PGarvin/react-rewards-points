@@ -99,7 +99,10 @@ class Collection extends React.Component {
     const { purchases } = this.props;
     return (
       <div className="holder">
+        <header>
         <h1>Points from the last 3 months</h1>
+        </header>
+        <main role="main">
         <MonthCollection months={threeMonths} />
         <Table striped bordered hover size="sm" className="table">
           <thead>
@@ -115,6 +118,7 @@ class Collection extends React.Component {
             ))}
           </tbody>
         </Table>
+        </main>
       </div>
     );
   }
